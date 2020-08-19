@@ -42,7 +42,6 @@ install:
 # build matrix
 matrix:
   include:
-    # linux builds on gcc x64
     - os: linux
       arch: amd64
       compiler: gcc
