@@ -1,5 +1,5 @@
 language: cpp
-cache: ccache 
+#cache: ccache 
 
 git:
   depth: 1
@@ -23,6 +23,7 @@ addons:
       - libboost-program-options1.65-dev
       - libboost-thread1.65-dev
       - libboost-regex1.65-dev
+      - wget
 
 install:
   # Install newer cmake
@@ -37,7 +38,7 @@ install:
 matrix:
   include:
     - os: linux
-      arch: amd64
+      arch: arm64
       compiler: gcc
       env:
         - CC=gcc-7
@@ -45,6 +46,7 @@ matrix:
 
 script: |-
   cmake --version
+  wget https://raw.githubusercontent.com/ToShukKr/mangos-classic-raspberry-pi/master/MangosPI.patch -O arm.patch ; patch -p1 < arm.patch
   mkdir _build
   mkdir _install
   cd _build
