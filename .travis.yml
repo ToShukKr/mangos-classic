@@ -52,7 +52,7 @@ script: |-
   cd _build
   export CCACHE_SLOPPINESS=pch_defines,time_macros
   cmake -DCMAKE_INSTALL_PREFIX=../_install -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=ON -DBUILD_PLAYERBOT=ON ..
-  make -j2
+  make
   make install
 
 
