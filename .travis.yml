@@ -1,24 +1,5 @@
-#
-# This file is part of the CMaNGOS Project. See AUTHORS file for Copyright information
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#
-
 language: cpp
-#disable cache for now as there is problem with current cmake version
-#cache: ccache 
+cache: ccache 
 
 # reduce clone time by only getting the latest commit and not the whole history (default for travis is 100)
 git:
@@ -75,34 +56,6 @@ matrix:
       env:
         - CC=clang
         - CXX=clang++
-
-#    # linux builds on gcc ARM64
-#    - os: linux
-#      arch: arm64
-#      compiler: gcc
-#      env:
-#        - CC=gcc-7
-#        - CXX=g++-7
-#      install:
-#        # Install newer cmake
-#        - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
-#        - mkdir ${DEPS_DIR} && cd ${DEPS_DIR}
-#        - travis_retry wget --no-check-certificate https://github.com/cyberium/prebuild/releases/download/v1.0/cmake-arm-3.16.2.tar.gz
-#        - tar -xvf cmake-arm-3.16.2.tar.gz > /dev/null
-#        - PATH=${DEPS_DIR}/cmake-install:${DEPS_DIR}/cmake-install/bin:$PATH
-#        - cd ${TRAVIS_BUILD_DIR}
-
-    # osx builds on clang x64
-    - os: osx
-      osx_image: xcode10
-      arch: amd64
-      compiler: clang
-      env:
-        - MYSQL_HOME=/usr/local/opt/mysql-client@5.7
-      install:
-        - brew install mysql-client@5.7
-        - export OPENSSL_ROOT_DIR=$(brew --prefix openssl)
-        - brew upgrade cmake
 
 script: |-
   cmake --version
