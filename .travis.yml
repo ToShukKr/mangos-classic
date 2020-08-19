@@ -49,13 +49,6 @@ matrix:
       env:
         - CC=gcc-7
         - CXX=g++-7
-    # linux builds on clang x64
-    - os: linux
-      arch: amd64
-      compiler: clang
-      env:
-        - CC=clang
-        - CXX=clang++
 
 script: |-
   cmake --version
