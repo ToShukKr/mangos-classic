@@ -1,21 +1,16 @@
 language: cpp
 cache: ccache 
 
-# reduce clone time by only getting the latest commit and not the whole history (default for travis is 100)
 git:
   depth: 1
 
-# don't re-build for tags so that [publish binary] is not re-run
-# https://github.com/travis-ci/travis-ci/issues/1532
 branches:
   except:
     - /^Last_.*/
 
-# use ubuntu 18.04 VM
 dist:
     bionic
 
-# install dpendencies for linux
 addons:
   apt:
     packages:
@@ -39,7 +34,6 @@ install:
   - PATH=${DEPS_DIR}/cmake-install:${DEPS_DIR}/cmake-install/bin:$PATH
   - cd ${TRAVIS_BUILD_DIR}
 
-# build matrix
 matrix:
   include:
     - os: linux
